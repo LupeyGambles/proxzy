@@ -1,0 +1,33 @@
+<link rel="stylesheet" href="settings.css">
+<script src="anticlose.js"></script>
+
+<div>
+  <a href="index.html" class="nav-link" title="Home">  
+    <i class="fa-solid fa-house"></i>
+    <span class="link-text">Home</span>
+</a>
+</div>
+<div class="section">
+    <h2>Anticlose</h2>
+    <label class="anticlose-container">
+        <span class="checkmark">Prevent teachers from closing the tab</span><br>
+        <input type="checkbox" id="anticlose">
+    </label>
+</div>
+<script>
+    function updateAnticloseHandler() {
+     if (anticloseCheckbox.checked) {
+       window.addEventListener('beforeunload', handleBeforeUnload);
+     } else {
+       window.removeEventListener('beforeunload', handleBeforeUnload);
+     }
+   }
+
+    updateAnticloseHandler();
+ 
+   anticloseCheckbox.addEventListener('change', () => {
+     localStorage.setItem(ANTICLOSE_STORAGE_KEY, anticloseCheckbox.checked.toString());
+     updateAnticloseHandler();
+   });
+</script>
+<body></body>
